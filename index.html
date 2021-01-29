@@ -294,7 +294,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</div>
 							</div>
 							<div class="col-md-6 contact-wthree-right">
-								<form action="#" method="post">
+								<form id="submit-form" action="https://script.google.com/macros/s/AKfycbxaTt3VwY4q1mU-_7JjsEos-TjsCIPLr-rPjRjJP7xuv-1mK67n16No/exec" >
 									<input type="text" name="Name" placeholder="Name" required="">
 									<input type="email" class="email" name="Email" placeholder="Email" required="">
 									<input type="text" class="phone" name="phone" placeholder="Phone" required="">
@@ -346,6 +346,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbxaTt3VwY4q1mU-_7JjsEos-TjsCIPLr-rPjRjJP7xuv-1mK67n16No/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 </html>
